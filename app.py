@@ -8,7 +8,7 @@ from sqlalchemy.exc import IntegrityError
 import os 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///auth_demo"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://auth_demo"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 # Heroku Deployment (secretkey)

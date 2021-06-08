@@ -9,6 +9,12 @@ import os
 
 app = Flask(__name__)
 # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://auth_demo"
+# If we are in production, make sure we DO NOT use the debug mode
+if os.environ.get('ENV') == 'production':
+    # Heroku gives us an environment variable called DATABASE_URL when we add a postgres database
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://auth_demo'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('postgres://auth_demo').replace("://", "ql://", 1)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True

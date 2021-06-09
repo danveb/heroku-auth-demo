@@ -9,7 +9,8 @@ import os
 
 app = Flask(__name__)
 # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://auth_demo"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+# Postgresql for Heroku! 
+app.config['SQLALCHEMY_DATABSAE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://auth-demo') 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 # Heroku Deployment (secretkey)
